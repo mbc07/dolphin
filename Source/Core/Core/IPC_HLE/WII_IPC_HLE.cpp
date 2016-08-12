@@ -52,6 +52,7 @@ They will also generate a true or false return for UpdateInterrupts() in WII_IPC
 #include "Core/IPC_HLE/WII_IPC_HLE_Device_stm.h"
 #include "Core/IPC_HLE/WII_IPC_HLE_Device_usb.h"
 #include "Core/IPC_HLE/WII_IPC_HLE_Device_usb_kbd.h"
+#include "Core/IPC_HLE/WII_IPC_HLE_Device_WiiSpeak.h"
 
 #if defined(__LIBUSB__) || defined(_WIN32)
 #include "Core/IPC_HLE/WII_IPC_HLE_Device_hid.h"
@@ -127,6 +128,8 @@ void Init()
   num_devices = 0;
 
   // Build hardware devices
+  AddDevice<CWII_IPC_HLE_Device_usb_oh0_46d_a03>("/dev/usb/oh0/46d/a03"); // Logitech Vantage USB Microphone
+  AddDevice<CWII_IPC_HLE_Device_usb_oh0_57e_308>("/dev/usb/oh0/57e/308"); // Wii Speak
   AddDevice<CWII_IPC_HLE_Device_usb_oh1_57e_305>("/dev/usb/oh1/57e/305");
   AddDevice<CWII_IPC_HLE_Device_stm_immediate>("/dev/stm/immediate");
   AddDevice<CWII_IPC_HLE_Device_stm_eventhook>("/dev/stm/eventhook");
@@ -147,6 +150,8 @@ void Init()
   AddDevice<CWII_IPC_HLE_Device_net_ip_top>("/dev/net/ip/top");
   AddDevice<CWII_IPC_HLE_Device_net_ssl>("/dev/net/ssl");
   AddDevice<CWII_IPC_HLE_Device_usb_kbd>("/dev/usb/kbd");
+  AddDevice<CWII_IPC_HLE_Device_usb_oh0>("/dev/usb/oh0");
+  AddDevice<CWII_IPC_HLE_Device_usb_ven>("/dev/usb/ven");
   AddDevice<CWII_IPC_HLE_Device_sdio_slot0>("/dev/sdio/slot0");
   AddDevice<CWII_IPC_HLE_Device_stub>("/dev/sdio/slot1");
 #if defined(__LIBUSB__) || defined(_WIN32)
